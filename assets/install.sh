@@ -51,6 +51,6 @@ postconf -e smtpd_use_tls=yes
 postconf -e mynetworks=172.17.0.0/16
 
 # sasl_passwd file setup
-echo $smtp_user > /etc/sasl_passwd
+echo "$relayhost $smtp_user" > /etc/sasl_passwd
 postmap /etc/sasl_passwd
 chown postfix.sasl /etc/sasl_passwd*
