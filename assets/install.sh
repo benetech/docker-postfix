@@ -48,8 +48,9 @@ postconf -e smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
 postconf -e smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
 postconf -e smtpd_tls_session_cache_database=btree:${data_directory}/smtpd_scache
 postconf -e smtpd_use_tls=yes
+postconf -e mynetworks=172.17.0.0/16
 
-# sasldb2
+# sasl_passwd file setup
 echo $smtp_user > /etc/sasl_passwd
 postmap /etc/sasl_passwd
 chown postfix.sasl /etc/sasl_passwd*
